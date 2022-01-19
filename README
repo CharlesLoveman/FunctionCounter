@@ -1,0 +1,8 @@
+To build the library clone the git repo into a folder in llvm/lib/Transforms/.
+Then add 'add_subdirectory(NumFuncs)' to the CMakeLists.txt file in the Transforms directory.
+Then build llvm using your preferred build tool (make, ninja, etc).
+The LLVMNumFuncs.so library should be built to llvm/OBJ_DIR/lib/
+
+To run the pass on program.bc, execute 'opt -load ...LLVMNumFuncs.so -numfuncs < program.bc > /dev/null'
+It should output the number of functions and basic blocks to stderr and produce a histogram of block
+lengths in histogram.pdf.
